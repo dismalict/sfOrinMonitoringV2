@@ -1,0 +1,18 @@
+[Unit]
+Description=DismalOrinMonitoring
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/python3 /home/administrator/dismalOrinMonitoring/dismalOrinGather.py
+WorkingDirectory=/home/administrator/dismalOrinMonitoring
+User=root
+Group=root
+Restart=always
+RestartSec=5
+Environment=PYTHONUNBUFFERED=1
+StandardOutput=append:/home/administrator/dismalOrinMonitoring/output.log
+StandardError=append:/home/administrator/dismalOrinMonitoring/error.log
+
+
+[Install]
+WantedBy=multi-user.target
