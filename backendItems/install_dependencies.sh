@@ -23,6 +23,24 @@ pip3 install --upgrade \
     psutil \
     configparser \
     subprocess32
-    
-# Ensure other packages is installed
+
+# Ensure other packages are installed
 apt-get install -y nano
+
+# -----------------------------
+# Systemd service setup
+# -----------------------------
+SERVICE_FILE="/home/administrator/sfOrinMonitoringV2/backendItems/dismalOrinGather.service"
+DEST="/etc/systemd/system/dismalOrinGather.service"
+
+echo "Installing systemd service..."
+
+# Copy the service file
+cp "$SERVICE_FILE" "$DEST"
+
+# Reload systemd, enable, and start the service
+systemctl daemon-reload
+systemctl enable dismalOrinGather.service
+systemctl restart dismalOrinGather.service
+
+echo "Service dismalOrinGather installed and started!"
