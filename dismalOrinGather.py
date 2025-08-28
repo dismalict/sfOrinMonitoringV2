@@ -63,7 +63,7 @@ def gather_device_info():
     }
 
 def read_db_config(filename='backendItems/config.ini', section='database'):
-    parser = ConfigParser()
+    parser = ConfigParser(interpolation=None)  # disable % interpolation
     parser.read(filename)
     db = {}
     if parser.has_section(section):
